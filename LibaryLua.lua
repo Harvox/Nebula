@@ -4682,7 +4682,7 @@ function library:CreateSettingsTab(menu)
     end})
 
     mainSection:AddButton({text = 'Join Discord', flag = 'joindiscord', confirm = true, callback = function()
-        local res = syn.request({
+        local res = request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
             Headers = {
@@ -4714,9 +4714,7 @@ function library:CreateSettingsTab(menu)
     end})
 
     mainSection:AddSeparator({text = 'Keybinds'});
-    mainSection:AddToggle({text = 'Keybind Indicator', flag = 'keybind_indicator', callback = function(bool)
-        library.keyIndicator:SetEnabled(bool);
-    end})
+
     mainSection:AddSlider({text = 'Position X', flag = 'keybind_indicator_x', min = 0, max = 100, increment = .1, value = .5, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
